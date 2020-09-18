@@ -1,0 +1,527 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://src/Ball.gd" type="Script" id=1]
+[ext_resource path="res://src/Walls.gd" type="Script" id=2]
+[ext_resource path="res://InGameUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Player.gd" type="Script" id=4]
+[ext_resource path="res://src/Main.gd" type="Script" id=5]
+[ext_resource path="res://assets/enemies/trianglenemy.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/player_effect.png" type="Texture" id=7]
+[ext_resource path="res://assets/player/ball.png" type="Texture" id=8]
+[ext_resource path="res://assets/walls/walls.png" type="Texture" id=9]
+[ext_resource path="res://assets/backgrounds/background.png" type="Texture" id=10]
+[ext_resource path="res://assets/player/player.png" type="Texture" id=12]
+
+
+
+
+
+
+
+
+
+
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+
+[sub_resource type="CircleShape2D" id=2]
+
+[sub_resource type="Animation" id=3]
+resource_name = "New Anim"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 5.03754, -0.822144 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 460.453, 445.841 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 65.5, 112.3, 149.7, 224.5, 360.0 ]
+}
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.304348, 0.822704 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.00637758 ), 1.16341, 0.0, 0, 0 ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 20.1582, 17.9988 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 31.3156, 19.3159 )
+
+[node name="Root" type="WorldEnvironment"]
+environment = SubResource( 1 )
+script = ExtResource( 5 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 362.122, 393.932 )
+texture = ExtResource( 10 )
+offset = Vector2( -90.9553, 87.4641 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Ball" type="KinematicBody2D" parent="." groups=[
+"balls",
+]]
+position = Vector2( 280.911, 627.345 )
+rotation = 6.28319
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Ball"]
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+position = Vector2( 5.03754, -0.822144 )
+scale = Vector2( 2.5, 2.5 )
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ball"]
+"anims/New Anim" = SubResource( 3 )
+anims/idle = SubResource( 4 )
+
+[node name="Player" type="KinematicBody2D" parent="." groups=[
+"players",
+]]
+position = Vector2( 256.232, 882.215 )
+scale = Vector2( 1.68342, 0.251014 )
+script = ExtResource( 4 )
+
+[node name="MiddleParticles" type="CPUParticles2D" parent="Player"]
+visible = false
+position = Vector2( -2.09624, 196.729 )
+scale = Vector2( 0.5, 0.5 )
+fract_delta = false
+local_coords = false
+texture = ExtResource( 7 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 1 )
+spread = 107.07
+gravity = Vector2( 0, 100 )
+scale_amount = 0.7
+scale_amount_curve = SubResource( 5 )
+color = Color( 1, 1, 1, 0.356863 )
+
+[node name="MiddleParticles2" type="CPUParticles2D" parent="Player"]
+visible = false
+position = Vector2( 36.1168, 187.516 )
+scale = Vector2( 0.5, 0.5 )
+fract_delta = false
+local_coords = false
+texture = ExtResource( 7 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 1 )
+spread = 107.07
+gravity = Vector2( 0, 100 )
+scale_amount = 0.7
+scale_amount_curve = SubResource( 5 )
+color = Color( 1, 1, 1, 0.356863 )
+
+[node name="MiddleParticles3" type="CPUParticles2D" parent="Player"]
+visible = false
+position = Vector2( 17.1352, 201.754 )
+scale = Vector2( 0.5, 0.5 )
+fract_delta = false
+local_coords = false
+texture = ExtResource( 7 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 1 )
+spread = 107.07
+gravity = Vector2( 0, 100 )
+scale_amount = 0.7
+scale_amount_curve = SubResource( 5 )
+color = Color( 1, 1, 1, 0.356863 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Player"]
+position = Vector2( 8.13538, 43.9114 )
+rotation = 0.0609903
+scale = Vector2( 0.297555, 1.99184 )
+polygon = PoolVector2Array( 152.152, 25.6886, -70.7306, 27.2209, -43.3889, -0.0799561, 105.381, 0.56665 )
+
+[node name="Sprite" type="Sprite" parent="Player"]
+position = Vector2( 17.0079, 104.679 )
+scale = Vector2( 0.441415, 2.96035 )
+texture = ExtResource( 12 )
+
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2( -7.49158, 74.9154 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TriangleEnemy" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 348.947, 412.941 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="TriangleEnemy2" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 264.17, 413.609 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy2"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy2"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="TriangleEnemy3" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 175.164, 413.832 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy3"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy3"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="TriangleEnemy4" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 431.94, 414.053 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy4"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy4"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="TriangleEnemy13" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 349.054, 243.555 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy13"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy13"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="TriangleEnemy14" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 304.487, 152.738 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy14"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy14"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="TriangleEnemy15" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 221.238, 151.897 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy15"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy15"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="TriangleEnemy17" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 265.335, 71.2625 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy17"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy17"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="TriangleEnemy6" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 89.9398, 413.609 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy6"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy6"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="TriangleEnemy7" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 307.522, 322.19 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy7"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy7"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="TriangleEnemy8" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 221.853, 321.076 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy8"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy8"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="TriangleEnemy11" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 182.529, 247.54 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy11"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy11"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="TriangleEnemy12" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 265.378, 247.434 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy12"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy12"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="TriangleEnemy9" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 130.175, 318.627 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy9"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy9"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="TriangleEnemy10" type="StaticBody2D" parent="Enemies" groups=[
+"enemies",
+]]
+position = Vector2( 394.078, 320.629 )
+rotation = 0.00910527
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="trianglenemy" type="Sprite" parent="Enemies/TriangleEnemy10"]
+position = Vector2( 23.8111, 17.7615 )
+rotation = -0.00910527
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemies/TriangleEnemy10"]
+polygon = PoolVector2Array( -32.9329, -3.31348, 22.9328, -18.3228, 79.5807, -2.33795, 25.0982, 109.663 )
+
+[node name="UI" parent="." instance=ExtResource( 3 )]
+
+[node name="Walls" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="walls" type="Sprite" parent="Walls"]
+position = Vector2( 283.488, 496.177 )
+scale = Vector2( 1, 0.995025 )
+texture = ExtResource( 9 )
+
+[node name="TopWall" type="StaticBody2D" parent="Walls" groups=[
+"platforms",
+]]
+position = Vector2( 267.212, -76.6973 )
+scale = Vector2( 0.953375, 1.46665 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall"]
+position = Vector2( -0.397949, 21.0998 )
+scale = Vector2( 14.2197, 2.7074 )
+shape = SubResource( 6 )
+
+[node name="LeftWall" type="StaticBody2D" parent="Walls" groups=[
+"platforms",
+]]
+position = Vector2( 13.1431, 486.556 )
+scale = Vector2( 1, 8.43857 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
+position = Vector2( -9.8196, -0.173138 )
+scale = Vector2( 1, 3.24611 )
+shape = SubResource( 6 )
+
+[node name="RightWall" type="StaticBody2D" parent="Walls" groups=[
+"platforms",
+]]
+position = Vector2( 562.605, 476.93 )
+scale = Vector2( 0.912356, 8.43857 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall"]
+position = Vector2( -32.4187, 0.23592 )
+scale = Vector2( 1, 3.2013 )
+shape = SubResource( 6 )
+
+[node name="OutOfBoundsWall" type="Area2D" parent="Walls"]
+position = Vector2( 284.671, 983.287 )
+scale = Vector2( 12.6726, -1.21421 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/OutOfBoundsWall"]
+shape = SubResource( 7 )
+[connection signal="enemy_touched" from="Ball" to="." method="_on_Ball_enemy_touched" binds= [ "enemy_name" ]]
+[connection signal="ball_exited" from="Walls" to="." method="_on_Walls_ball_exited"]
+[connection signal="body_entered" from="Walls/OutOfBoundsWall" to="Walls/OutOfBoundsWall" method="_on_OutOfBoundsWall_body_entered"]
+[connection signal="body_entered" from="Walls/OutOfBoundsWall" to="Walls" method="_on_OutOfBoundsWall_body_entered"]

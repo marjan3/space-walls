@@ -1,0 +1,97 @@
+[gd_scene format=2]
+
+[node name="Root" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsTabContainer" type="TabContainer" parent="."]
+margin_left = 68.645
+margin_top = 416.91
+margin_right = 499.645
+margin_bottom = 702.91
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PauseTab" type="Tabs" parent="OptionsTabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="GraphicsTab" type="Tabs" parent="OptionsTabContainer"]
+anchor_left = 0.0058997
+anchor_top = 0.210938
+anchor_right = 1.0059
+anchor_bottom = 1.21094
+margin_right = -8.0
+margin_bottom = -36.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlsTab" type="Tabs" parent="OptionsTabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -295.0
+margin_bottom = -72.0
+
+[node name="AudioTab" type="Tabs" parent="OptionsTabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -295.0
+margin_bottom = -72.0
+
+[node name="TabContents" type="VBoxContainer" parent="."]
+margin_left = 109.0
+margin_top = 446.0
+margin_right = 436.0
+margin_bottom = 686.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabContents"]
+margin_top = -1.0
+margin_right = 327.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 200, 50 )
+text = "TITLE"
+align = 1
+valign = 1
+
+[node name="KeyValuePair" type="HBoxContainer" parent="TabContents"]
+margin_top = 54.0
+margin_right = 327.0
+margin_bottom = 94.0
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContents/KeyValuePair"]
+margin_left = 110.0
+margin_top = 13.0
+margin_right = 136.0
+margin_bottom = 27.0
+text = "KEY:"
+
+[node name="CheckButton" type="CheckButton" parent="TabContents/KeyValuePair"]
+margin_left = 140.0
+margin_right = 216.0
+margin_bottom = 40.0
+
+[node name="Button" type="Button" parent="TabContents"]
+margin_top = 98.0
+margin_right = 327.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 200, 50 )
+text = "Button"

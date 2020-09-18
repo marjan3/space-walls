@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/ui/start_button_pressed.png" type="Texture" id=1]
+[ext_resource path="res://assets/ui/start_button_normal.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui/start_button_hover.png" type="Texture" id=3]
+[ext_resource path="res://assets/ui/options_button_pressed.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/options_button_normal.png" type="Texture" id=5]
+[ext_resource path="res://assets/ui/quit_button_hover.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/quit_button_normal.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/options_button_hover.png" type="Texture" id=8]
+[ext_resource path="res://assets/ui/quit_button_pressed.png" type="Texture" id=9]
+[ext_resource path="res://assets/ui/credits_button_pressed.png" type="Texture" id=10]
+[ext_resource path="res://assets/ui/credits_button_normal.png" type="Texture" id=11]
+[ext_resource path="res://assets/ui/credits_button_hover.png" type="Texture" id=12]
+[ext_resource path="res://src/MainMenuButtons.gd" type="Script" id=13]
+
+
+
+
+[node name="MainMenuButtons" type="Control"]
+margin_left = 161.428
+margin_top = 702.267
+margin_right = 377.428
+margin_bottom = 948.267
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartGameButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -108.0
+margin_top = 0.625
+margin_right = 96.0
+margin_bottom = 50.625
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 3 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -113.0
+margin_top = 65.0
+margin_right = 104.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 200, 50 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 8 )
+stretch_mode = 3
+
+[node name="CreditsButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -112.0
+margin_top = 128.0
+margin_right = 104.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 200, 50 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 12 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -105.0
+margin_top = 193.334
+margin_right = 95.0
+margin_bottom = 243.334
+rect_min_size = Vector2( 200, 50 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 6 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}

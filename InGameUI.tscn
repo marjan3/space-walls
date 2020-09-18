@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://src/Timer.gd" type="Script" id=2]
+[ext_resource path="res://assets/ui/pause_button_pressed.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/ChopsicFont.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://src/InGameUI.gd" type="Script" id=5]
+[ext_resource path="res://assets/ui/pause_button_normal.png" type="Texture" id=6]
+[ext_resource path="res://assets/ui/pause_button_hover.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 4 )
+
+[node name="UI" type="Node"]
+script = ExtResource( 5 )
+
+[node name="TimeCounter" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="TimerCounterLabel" type="Label" parent="TimeCounter"]
+margin_left = 435.0
+margin_top = 54.3265
+margin_right = 524.0
+margin_bottom = 72.3265
+size_flags_stretch_ratio = 0.5
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.254902, 1, 0.886275, 0.494118 )
+text = "02:15"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemiesCounter" type="Node" parent="."]
+
+[node name="EnemiesCounterLabel" type="Label" parent="EnemiesCounter"]
+margin_left = 93.8529
+margin_top = 46.9103
+margin_right = 182.853
+margin_bottom = 64.9103
+size_flags_stretch_ratio = 0.5
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.254902, 1, 0.886275, 0.494118 )
+text = "ENEMIES:  10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Results" type="Label" parent="."]
+visible = false
+margin_left = -31.0
+margin_top = 1.0
+margin_right = 569.0
+margin_bottom = 541.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.254902, 1, 0.886275, 1 )
+text = "CONGRATULATIONS!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseButton" type="TextureButton" parent="."]
+margin_left = 39.2551
+margin_top = 40.8425
+margin_right = 84.2551
+margin_bottom = 86.8425
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
