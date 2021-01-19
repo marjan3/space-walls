@@ -18,7 +18,6 @@ Download Godot, then open the project with Godot and run it.
 
 ## Future changes
 
-- Add pause button
 - Add options
 - Add variety of enemies and mechanics
 - Animate characters
