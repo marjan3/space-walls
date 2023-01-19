@@ -93,6 +93,7 @@ anims/idle = SubResource( 3 )
 [node name="logo" type="Sprite" parent="."]
 position = Vector2( 267.963, 118.99 )
 texture = ExtResource( 4 )
+
 [connection signal="pressed" from="StartGameButtons/ContinueButton" to="." method="_on_ContinueButton_pressed"]
 [connection signal="pressed" from="StartGameButtons/NewGameButton" to="." method="_on_NewGameButton_pressed"]
 [connection signal="pressed" from="StartGameButtons/OptionsButton" to="." method="_on_OptionsButton_pressed"]
@@ -102,5 +103,4 @@ texture = ExtResource( 4 )
 [connection signal="pressed" from="MainMenuButtons/QuitButton" to="." method="_on_QuitButton_pressed"]
 
 [editable path="StartGameButtons"]
-
 [editable path="MainMenuButtons"]
